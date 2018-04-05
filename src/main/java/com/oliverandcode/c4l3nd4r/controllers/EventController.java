@@ -5,12 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HomeController {
+public class EventController {
 
-    @RequestMapping(value = "")
+    @RequestMapping(value = "events")
     public String index(Model model) {
-        model.addAttribute("title", "CLNDR home");
-        return "index";
+        model.addAttribute("title", "My Events");
+        return "events/my-events";
     }
 
 }
