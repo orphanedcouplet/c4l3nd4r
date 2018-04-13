@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="fragments :: head"></head>
+
 <body class="container">
 
 <h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<!--TODO: change href once add-event template is created-->
+<p th:unless="${events} and ${events.size()}">No events yet! <a href="/events/add-event">Add event?</a> </p>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Location</th>
+    </tr>
+
+    <tr th:each="event : ${events}">
+        <td th:text="${event.title}"></td>
+        <td th:text="${event.dateTime}"></td>
+        <td th:text="${event.location.name}"></td>
+    </tr>
+
+</table>
+
+<nav th:replace="fragments :: navigation"></nav>
 
 </body>
 </html>
