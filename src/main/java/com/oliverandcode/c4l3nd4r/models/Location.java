@@ -1,10 +1,20 @@
 package com.oliverandcode.c4l3nd4r.models;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
 public class Location {
 
-    private final int id;
-    private static int nextId=1;
+    @Id
+    @GeneratedValue
+    private int id;
 
+    @NotNull
+    @Size(min = 1, max = 350)
     private String name;
 
     private String addressLineOne;
@@ -17,7 +27,15 @@ public class Location {
 
     private String zipCode;
 
-    public Location(int id, String name, String addressLineOne, String addressLineTwo, String city, String state, String zipCode) {
+    private String description;
+
+    @OneToMany
+    @JoinColumn(name = "location_id")
+    private List<Event> events = new ArrayList<>();
+
+    public Location() {}
+
+    public Location(int id, String name, String addressLineOne, String addressLineTwo, String city, String state, String zipCode, String description) {
         this.id = id;
         this.name = name;
         this.addressLineOne = addressLineOne;
@@ -25,18 +43,11 @@ public class Location {
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
+        this.description = description;
     }
 
     public int getId() {
         return id;
-    }
-
-    public static int getNextId() {
-        return nextId;
-    }
-
-    public static void setNextId(int nextId) {
-        Location.nextId = nextId;
     }
 
     public String getName() {
@@ -85,5 +96,13 @@ public class Location {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

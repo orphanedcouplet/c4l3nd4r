@@ -1,19 +1,32 @@
 package com.oliverandcode.c4l3nd4r.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Calendar;
 
+@Entity
 public class Event {
 
-    private final int id;
-    private static int nextId=1;
+    @Id
+    @GeneratedValue
+    private int id;
 
+    @NotNull
+    @Size(min = 1, max = 140)
     private String title;
 
     private String description;
 
     private Calendar dateTime;
 
+    @ManyToOne
     private Location location;
+
+    public Event() {}
 
     public Event(int id, String title, String description, Calendar dateTime, Location location) {
         this.id = id;
@@ -25,10 +38,6 @@ public class Event {
 
     public int getId() {
         return id;
-    }
-
-    public static int getNextId() {
-        return nextId;
     }
 
     public String getTitle() {
