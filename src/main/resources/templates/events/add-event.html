@@ -7,6 +7,78 @@
 
 <h1 th:text="${title}">Default Title</h1>
 
+<form method="post" style="max-width:600px;" th:object="${event}">
+
+    <div class="form-group">
+        <label th:for="title">Title</label>
+        <input class="form-control" th:field="*{title}" />
+        <span th:errors="*{title}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="description">Description</label>
+        <input class="form-control" th:field="*{description}" />
+        <span th:errors="*{description}" class="error"></span>
+    </div>
+
+    <!-- TODO fix this!!! -->
+    <div class="form-group">
+        <label th:for="dateTime">Date and Time (under construction!!!!)</label>
+        <input class="form-control" th:field="*{dateTime}" />
+        <span th:errors="*{dateTime}" class="error"></span>
+    </div>
+
+
+    <!--<div class="form-group">-->
+        <!--<label th:for="month">Month (2 digit)</label>-->
+        <!--<input class="form-control" th:field="*{month}" />-->
+        <!--<span th:errors="*{month}" class="error"></span>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+        <!--<label th:for="day">Day of Month (2 digit)</label>-->
+        <!--<input class="form-control" th:field="*{day}" />-->
+        <!--<span th:errors="*{day}" class="error"></span>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+        <!--<label th:for="year">Year (4 digit)</label>-->
+        <!--<input class="form-control" th:field="*{year}" />-->
+        <!--<span th:errors="*{year}" class="error"></span>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+        <!--<label th:for="hour">Time (2 digit - hour)</label>-->
+        <!--<input class="form-control" th:field="*{hour}" />-->
+        <!--<span th:errors="*{hour}" class="error"></span>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+        <!--<label th:for="minute">Time (2 digit - minute)</label>-->
+        <!--<input class="form-control" th:field="*{minute}" />-->
+        <!--<span th:errors="*{minute}" class="error"></span>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+        <!--<label th:for="ampm">Time (AM/PM)</label>-->
+        <!--<input class="form-control" th:field="*{ampm}" />-->
+        <!--<span th:errors="*{ampm}" class="error"></span>-->
+    <!--</div>-->
+
+    <div class="form-group">
+        <label th:for="location">Location</label>
+        <select name="locationId" id="location">
+            <option th:each="location : ${locations}"
+                    th:text="${location.name}"
+                    th:value="${location.id}"></option>
+        </select>
+        <span th:errors="*{location}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Create Event!" />
+
+</form>
+
 
 </body>
 </html>

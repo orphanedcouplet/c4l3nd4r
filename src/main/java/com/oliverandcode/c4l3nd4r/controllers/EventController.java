@@ -33,8 +33,8 @@ public class EventController {
         return "events/my-events";
     }
 
-    // request path: /events/add
-    @RequestMapping(value = "add", method = RequestMethod.GET)
+    // request path: /events/add-event
+    @RequestMapping(value = "add-event", method = RequestMethod.GET)
     public String displayAddEventForm(Model model) {
         model.addAttribute("title", "New Event");
         model.addAttribute(new Event());
@@ -42,8 +42,8 @@ public class EventController {
         return "events/add-event";
     }
 
-    // request path: /events/add
-    @RequestMapping(value = "add", method = RequestMethod.POST)
+    // request path: /events/add-event
+    @RequestMapping(value = "add-event", method = RequestMethod.POST)
     public String processAddEventForm(@ModelAttribute @Valid Event newEvent,
                                       Errors errors,
                                       @RequestParam int locationId,
