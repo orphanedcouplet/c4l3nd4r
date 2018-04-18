@@ -13,6 +13,7 @@ public class LocationController {
     @Autowired
     private LocationDao locationDao;
 
+    // request path: /locations
     @RequestMapping(value = "")
     public String index(Model model) {
         model.addAttribute("title", "My Locations");
