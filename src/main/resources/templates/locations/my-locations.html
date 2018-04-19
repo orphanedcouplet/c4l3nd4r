@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="fragments :: head"></head>
-
 <body class="container">
 
 <h1 th:text="${title}">Default Title</h1>
 
-<nav th:replace="fragments :: navigation"></nav>
+<hr />
+
+<nav th:replace="fragments :: main-nav"></nav>
+
+<hr />
 
 <!--TODO: change href once add-location template is created-->
 <p th:unless="${locations} and ${locations.size()}">No locations yet! <a href="/locations/add-location">Add location?</a> </p>
+
+<hr />
+
+<nav>
+    <a href="/locations/add-location">New location</a>
+</nav>
 
 <table class="table">
     <tr>
@@ -23,7 +31,15 @@
 
 </table>
 
-<nav th:replace="fragments :: navigation"></nav>
+<nav>
+    <a href="/locations/add-location">New location</a>
+</nav>
+
+<hr />
+
+<nav th:replace="fragments :: main-nav"></nav>
+
+<hr />
 
 </body>
 </html>

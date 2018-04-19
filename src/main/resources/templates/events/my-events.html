@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="fragments :: head"></head>
-
 <body class="container">
 
 <h1 th:text="${title}">Default Title</h1>
 
-<nav th:replace="fragments :: navigation"></nav>
+<hr />
+
+<nav th:replace="fragments :: main-nav"></nav>
+
+<hr />
 
 <!--TODO: change href once add-event template is created-->
 <p th:unless="${events} and ${events.size()}">No events yet! <a href="/events/add-event">Add event?</a> </p>
+
+<hr />
+
+<nav>
+    <a href="/events/add-event">New Event</a>
+</nav>
 
 <table class="table">
     <tr>
@@ -27,7 +35,15 @@
 
 </table>
 
-<nav th:replace="fragments :: navigation"></nav>
+<nav>
+    <a href="/events/add-event">New Event</a>
+</nav>
+
+<hr />
+
+<nav th:replace="fragments :: main-nav"></nav>
+
+<hr />
 
 </body>
 </html>
