@@ -24,11 +24,11 @@
     </div>
 
     <!-- TODO fix this!!! -->
-    <div class="form-group">
-        <label th:for="dateTime">Date and Time (under construction!!!!)</label>
-        <input class="form-control" th:field="*{dateTime}" />
-        <span th:errors="*{dateTime}" class="error"></span>
-    </div>
+    <!--<div class="form-group">-->
+        <!--<label th:for="dateAndTime">Date and Time (under construction!!!!)</label>-->
+        <!--<input class="form-control" th:field="*{dateAndTime}" />-->
+        <!--<span th:errors="*{dateAndTime}" class="error"></span>-->
+    <!--</div>-->
 
 
     <!--<div class="form-group">-->
@@ -66,6 +66,67 @@
         <!--<input class="form-control" th:field="*{ampm}" />-->
         <!--<span th:errors="*{ampm}" class="error"></span>-->
     <!--</div>-->
+
+    <div class="form-group">
+        <label th:for="year">Year</label>
+        <input class="form-control" name="year" id="year" />
+        <span class="error"></span>
+    </div>
+
+    <!--<div class="form-group">-->
+        <!--<label th:for="month">Month</label>-->
+        <!--<input class="form-control" id="month" />-->
+        <!--<span class="error"></span>-->
+    <!--</div>-->
+
+    <div class="form-group">
+        <label th:for="month">Month</label>
+        <select name="month" id="month">
+            <option th:text="January"
+                    th:value="01"></option>
+            <option th:text="February"
+                    th:value="02"></option>
+            <option th:text="March"
+                    th:value="03"></option>
+            <option th:text="April"
+                    th:value="04"></option>
+            <option th:text="May"
+                    th:value="05"></option>
+            <option th:text="June"
+                    th:value="06"></option>
+            <option th:text="July"
+                    th:value="07"></option>
+            <option th:text="August"
+                    th:value="08"></option>
+            <option th:text="September"
+                    th:value="09"></option>
+            <option th:text="October"
+                    th:value="10"></option>
+            <option th:text="November"
+                    th:value="11"></option>
+            <option th:text="December"
+                    th:value="12"></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label th:for="dayOfMonth">Day of Month</label>
+        <input class="form-control" name="dayOfMonth" id="dayOfMonth" />
+        <span class="error"></span>
+    </div>
+
+    <div class="form-control">
+        <label th:for="hourOfDay">Hour of Day (24 hour)</label>
+        <input class="form-control" name="hourOfDay" id="hourOfDay" />
+        <span class="error"></span>
+    </div>
+
+    <div class="form-control">
+        <label th:for="minute">Minute</label>
+        <input class="form-control" name="minute" id="minute" />
+        <span class="error"></span>
+    </div>
+
 
     <div class="form-group">
         <label th:for="location">Location</label>

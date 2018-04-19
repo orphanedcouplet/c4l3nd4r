@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.Calendar;
 
 @Controller
 @RequestMapping(value = "events")
@@ -47,6 +48,11 @@ public class EventController {
     public String processAddEventForm(@ModelAttribute @Valid Event newEvent,
                                       Errors errors,
                                       @RequestParam int locationId,
+                                      @RequestParam int year,
+                                      @RequestParam int month,
+                                      @RequestParam int dayOfMonth,
+                                      @RequestParam int hourOfDay,
+                                      @RequestParam int minute,
                                       Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "New Event");
@@ -55,7 +61,12 @@ public class EventController {
 
         Location location = locationDao.findOne(locationId);
         newEvent.setLocation(location);
+
+        Calendar dateAndTime = Calendar.getInstance();
+        dateAndTime.set(year, month, dayOfMonth, hourOfDay, minute);
+
         eventDao.save(newEvent);
+
         return "redirect:";
     }
 

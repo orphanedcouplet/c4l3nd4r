@@ -21,18 +21,18 @@ public class Event {
 
     private String description;
 
-    private Calendar dateTime;
+    private Calendar dateAndTime;
 
     @ManyToOne
     private Location location;
 
     public Event() {}
 
-    public Event(int id, String title, String description, Calendar dateTime, Location location) {
+    public Event(int id, String title, String description, Calendar dateAndTime, Location location) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.dateTime = dateTime;
+        this.dateAndTime = dateAndTime;
         this.location = location;
     }
 
@@ -56,12 +56,12 @@ public class Event {
         this.description = description;
     }
 
-    public Calendar getDateTime() {
-        return dateTime;
+    public Calendar getDateAndTime() {
+        return dateAndTime;
     }
 
-    public void setDateTime(Calendar dateTime) {
-        this.dateTime = dateTime;
+    public void setDateAndTime(Calendar dateAndTime) {
+        this.dateAndTime = dateAndTime;
     }
 
     public Location getLocation() {
