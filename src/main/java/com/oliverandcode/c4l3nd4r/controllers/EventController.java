@@ -70,5 +70,23 @@ public class EventController {
         return "redirect:";
     }
 
+    // request path: /events/delete-event
+    @RequestMapping(value = "delete-event", method = RequestMethod.GET)
+    public String displayDeleteEventForm(Model model) {
+        model.addAttribute("title", "Delete Event");
+        model.addAttribute("events", eventDao.findAll());
+        return "events/delete-event";
+    }
+
+    // request path: /events/delete-event
+    @RequestMapping(value = "delete-event", method = RequestMethod.POST)
+    public String processDeleteEventForm(@RequestParam int[] eventIds) {
+
+        for (int eventId : eventIds) {
+            eventDao.delete(eventId);
+        }
+
+        return "redirect:";
+    }
 
 }

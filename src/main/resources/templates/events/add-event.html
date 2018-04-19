@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head th:replace="fragments :: head"></head>
-
 <body class="container">
 
 <h1 th:text="${title}">Default Title</h1>
 
+<hr />
+
 <nav th:replace="fragments :: main-nav"></nav>
+
+<hr />
 
 <form method="post" style="max-width:600px;" th:object="${event}">
 
@@ -141,6 +143,8 @@
     <input type="submit" value="Create Event!" />
 
 </form>
+
+<hr />
 
 <nav th:replace="fragments :: main-nav"></nav>
 
