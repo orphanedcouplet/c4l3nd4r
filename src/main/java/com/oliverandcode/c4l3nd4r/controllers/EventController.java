@@ -64,6 +64,7 @@ public class EventController {
 
         Calendar dateAndTime = Calendar.getInstance();
         dateAndTime.set(year, month, dayOfMonth, hourOfDay, minute);
+        newEvent.setDateAndTime(dateAndTime);
 
         eventDao.save(newEvent);
 
