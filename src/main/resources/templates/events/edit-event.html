@@ -5,5 +5,107 @@
 
 <h1 th:text="${title}">Default Title</h1>
 
+<hr />
+
+<nav th:replace="fragments :: main-nav"></nav>
+
+<hr />
+
+<form method="post" style="max-width:600px;" th:object="${event}">
+
+    <input type="hidden" th:value="${event.id}" name="eventId" />
+
+    <div class="form-group">
+        <label th:for="title">Title</label>
+        <input class="form-control" th:field="*{title}" th:value="${event.title}" />
+        <span th:errors="*{title}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="description">Description</label>
+        <input class="form-control" th:field="*{description}" th:value="${event.description}" />
+        <span th:errors="*{description}" class="error"></span>
+    </div>
+
+    <!-- TODO fix this!!! -->
+    <!--<div class="form-group">-->
+    <!--<label th:for="dateAndTime">Date and Time (under construction!!!!)</label>-->
+    <!--<input class="form-control" th:field="*{dateAndTime}" />-->
+    <!--<span th:errors="*{dateAndTime}" class="error"></span>-->
+    <!--</div>-->
+
+    <div class="form-group">
+        <label th:for="year">Year</label>
+        <input class="form-control" name="year" id="year" />
+        <span class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="month">Month</label>
+        <select name="month" id="month">
+            <option th:text="January"
+                    th:value="01"></option>
+            <option th:text="February"
+                    th:value="02"></option>
+            <option th:text="March"
+                    th:value="03"></option>
+            <option th:text="April"
+                    th:value="04"></option>
+            <option th:text="May"
+                    th:value="05"></option>
+            <option th:text="June"
+                    th:value="06"></option>
+            <option th:text="July"
+                    th:value="07"></option>
+            <option th:text="August"
+                    th:value="08"></option>
+            <option th:text="September"
+                    th:value="09"></option>
+            <option th:text="October"
+                    th:value="10"></option>
+            <option th:text="November"
+                    th:value="11"></option>
+            <option th:text="December"
+                    th:value="12"></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label th:for="dayOfMonth">Day of Month</label>
+        <input class="form-control" name="dayOfMonth" id="dayOfMonth" />
+        <span class="error"></span>
+    </div>
+
+    <div class="form-control">
+        <label th:for="hourOfDay">Hour of Day (24 hour)</label>
+        <input class="form-control" name="hourOfDay" id="hourOfDay" />
+        <span class="error"></span>
+    </div>
+
+    <div class="form-control">
+        <label th:for="minute">Minute</label>
+        <input class="form-control" name="minute" id="minute" />
+        <span class="error"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label th:for="location">Location</label>
+        <select name="locationId" id="location">
+            <option th:each="location : ${locations}"
+                    th:text="${location.name}"
+                    th:value="${location.id}"></option>
+        </select>
+        <span th:errors="*{location}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Create Event!" />
+
+</form>
+
+<hr />
+
+<nav th:replace="fragments :: main-nav"></nav>
+
 </body>
 </html>
