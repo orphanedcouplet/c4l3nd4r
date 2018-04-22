@@ -71,20 +71,50 @@ public class EventController {
     // request path: /events/edit-event/{#}
     @RequestMapping(value = "edit-event/{eventId}", method = RequestMethod.GET)
     public String displayEditEventForm(Model model, @PathVariable int eventId) {
-        Event eventToEdit = eventDao.findOne(eventId);
+
         model.addAttribute("title", "Edit Event");
+
+        Event eventToEdit = eventDao.findOne(eventId);
         model.addAttribute("event", eventToEdit);
+
+        Calendar dateAndTime = eventToEdit.getDateAndTime();
+        model.addAttribute("year", dateAndTime.get(Calendar.YEAR));
+        model.addAttribute("month",dateAndTime.get(Calendar.MONTH));
+        model.addAttribute("dayOfMonth", dateAndTime.get(Calendar.DAY_OF_MONTH));
+        model.addAttribute("hourOfDay", dateAndTime.get(Calendar.HOUR_OF_DAY));
+        model.addAttribute("minute", dateAndTime.get(Calendar.MINUTE));
+
+        model.addAttribute("eventLocation", eventToEdit.getLocation());
+
+        model.addAttribute("locations", locationDao.findAll());
+
         return "events/edit-event";
     }
 
     // request path: /events/edit-event/{#}
     @RequestMapping(value = "edit-event/{eventId}", method = RequestMethod.POST)
-    public String processEditEventForm(int eventId, String title, String description, Calendar dateAndTime, Location location) {
+    public String processEditEventForm(@PathVariable int eventId,
+                                       @RequestParam String title,
+                                       @RequestParam String description,
+                                       @RequestParam int year,
+                                       @RequestParam int month,
+                                       @RequestParam int dayOfMonth,
+                                       @RequestParam int hourOfDay,
+                                       @RequestParam int minute,
+                                       @RequestParam int locationId) {
+
         Event eventToEdit = eventDao.findOne(eventId);
+
         eventToEdit.setTitle(title);
         eventToEdit.setDescription(description);
+
+        Calendar dateAndTime = Calendar.getInstance();
+        dateAndTime.set(year, month, dayOfMonth, hourOfDay, minute);
         eventToEdit.setDateAndTime(dateAndTime);
+
+        Location location = locationDao.findOne(locationId);
         eventToEdit.setLocation(location);
+
         eventDao.save(eventToEdit);
         return "redirect:";
     }
