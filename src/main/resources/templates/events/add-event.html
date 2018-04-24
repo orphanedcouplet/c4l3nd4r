@@ -26,60 +26,12 @@
     </div>
 
     <!-- TODO fix this!!! -->
-    <!--<div class="form-group">-->
-        <!--<label th:for="dateAndTime">Date and Time (under construction!!!!)</label>-->
-        <!--<input class="form-control" th:field="*{dateAndTime}" />-->
-        <!--<span th:errors="*{dateAndTime}" class="error"></span>-->
-    <!--</div>-->
-
-
-    <!--<div class="form-group">-->
-        <!--<label th:for="month">Month (2 digit)</label>-->
-        <!--<input class="form-control" th:field="*{month}" />-->
-        <!--<span th:errors="*{month}" class="error"></span>-->
-    <!--</div>-->
-
-    <!--<div class="form-group">-->
-        <!--<label th:for="day">Day of Month (2 digit)</label>-->
-        <!--<input class="form-control" th:field="*{day}" />-->
-        <!--<span th:errors="*{day}" class="error"></span>-->
-    <!--</div>-->
-
-    <!--<div class="form-group">-->
-        <!--<label th:for="year">Year (4 digit)</label>-->
-        <!--<input class="form-control" th:field="*{year}" />-->
-        <!--<span th:errors="*{year}" class="error"></span>-->
-    <!--</div>-->
-
-    <!--<div class="form-group">-->
-        <!--<label th:for="hour">Time (2 digit - hour)</label>-->
-        <!--<input class="form-control" th:field="*{hour}" />-->
-        <!--<span th:errors="*{hour}" class="error"></span>-->
-    <!--</div>-->
-
-    <!--<div class="form-group">-->
-        <!--<label th:for="minute">Time (2 digit - minute)</label>-->
-        <!--<input class="form-control" th:field="*{minute}" />-->
-        <!--<span th:errors="*{minute}" class="error"></span>-->
-    <!--</div>-->
-
-    <!--<div class="form-group">-->
-        <!--<label th:for="ampm">Time (AM/PM)</label>-->
-        <!--<input class="form-control" th:field="*{ampm}" />-->
-        <!--<span th:errors="*{ampm}" class="error"></span>-->
-    <!--</div>-->
 
     <div class="form-group">
         <label th:for="year">Year</label>
         <input class="form-control" name="year" id="year" />
         <span class="error"></span>
     </div>
-
-    <!--<div class="form-group">-->
-        <!--<label th:for="month">Month</label>-->
-        <!--<input class="form-control" id="month" />-->
-        <!--<span class="error"></span>-->
-    <!--</div>-->
 
     <div class="form-group">
         <label th:for="month">Month</label>
@@ -117,15 +69,31 @@
         <span class="error"></span>
     </div>
 
+    <h3>Time (start)</h3>
+
     <div class="form-control">
-        <label th:for="hourOfDay">Hour of Day (24 hour)</label>
-        <input class="form-control" name="hourOfDay" id="hourOfDay" />
+        <label th:for="startHourOfDay">Hour of Day (24 hour)</label>
+        <input class="form-control" name="startHourOfDay" id="startHourOfDay" />
         <span class="error"></span>
     </div>
 
     <div class="form-control">
-        <label th:for="minute">Minute</label>
-        <input class="form-control" name="minute" id="minute" />
+        <label th:for="startMinute">Minute</label>
+        <input class="form-control" name="startMinute" id="startMinute" />
+        <span class="error"></span>
+    </div>
+
+    <h3>Time (end)</h3>
+
+    <div class="form-control">
+        <label th:for="endHourOfDay">Hour of Day (24 hour)</label>
+        <input class="form-control" name="endHourOfDay" id="endHourOfDay" />
+        <span class="error"></span>
+    </div>
+
+    <div class="form-control">
+        <label th:for="endMinute">Minute</label>
+        <input class="form-control" name="endMinute" id="endMinute" />
         <span class="error"></span>
     </div>
 

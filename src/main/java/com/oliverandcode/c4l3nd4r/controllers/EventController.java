@@ -48,8 +48,10 @@ public class EventController {
                                       @RequestParam int year,
                                       @RequestParam int month,
                                       @RequestParam int dayOfMonth,
-                                      @RequestParam int hourOfDay,
-                                      @RequestParam int minute,
+                                      @RequestParam int startHourOfDay,
+                                      @RequestParam int startMinute,
+                                      @RequestParam int endHourOfDay,
+                                      @RequestParam int endMinute,
                                       Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "New Event");
@@ -57,11 +59,16 @@ public class EventController {
         }
 
         Location location = locationDao.findOne(locationId);
-        newEvent.setLocation(location);
 
-        Calendar dateAndTime = Calendar.getInstance();
-        dateAndTime.set(year, month, dayOfMonth, hourOfDay, minute);
-        newEvent.setDateAndTime(dateAndTime);
+        Calendar startDateAndTime = Calendar.getInstance();
+        startDateAndTime.set(year, month, dayOfMonth, startHourOfDay, startMinute);
+
+        Calendar endDateAndTime = Calendar.getInstance();
+        endDateAndTime.set(year, month, dayOfMonth, endHourOfDay, endMinute);
+
+        newEvent.setLocation(location);
+        newEvent.setStartDateAndTime(startDateAndTime);
+        newEvent.setEndDateAndTime(endDateAndTime);
 
         eventDao.save(newEvent);
 
@@ -77,7 +84,7 @@ public class EventController {
         Event eventToEdit = eventDao.findOne(eventId);
         model.addAttribute("event", eventToEdit);
 
-        Calendar dateAndTime = eventToEdit.getDateAndTime();
+        Calendar dateAndTime = eventToEdit.getStartDateAndTime();
         model.addAttribute("year", dateAndTime.get(Calendar.YEAR));
         model.addAttribute("month",dateAndTime.get(Calendar.MONTH));
         model.addAttribute("dayOfMonth", dateAndTime.get(Calendar.DAY_OF_MONTH));
@@ -110,7 +117,7 @@ public class EventController {
 
         Calendar dateAndTime = Calendar.getInstance();
         dateAndTime.set(year, month, dayOfMonth, hourOfDay, minute);
-        eventToEdit.setDateAndTime(dateAndTime);
+        eventToEdit.setStartDateAndTime(dateAndTime);
 
         Location location = locationDao.findOne(locationId);
         eventToEdit.setLocation(location);
