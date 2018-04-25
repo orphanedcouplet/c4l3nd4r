@@ -116,7 +116,7 @@ public class EventController {
         eventToEdit.setLocation(location);
 
         eventDao.save(eventToEdit);
-        return "redirect:";
+        return "redirect:/events";
     }
 
     // request path: /events/delete-event
