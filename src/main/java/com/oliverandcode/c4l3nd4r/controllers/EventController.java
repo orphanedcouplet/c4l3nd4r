@@ -90,6 +90,12 @@ public class EventController {
         model.addAttribute("hourOfDay", dateAndTime.get(Calendar.HOUR_OF_DAY));
         model.addAttribute("minute", dateAndTime.get(Calendar.MINUTE));
 
+        Calendar end = eventToEdit.getEnd();
+        if (end != null) {
+            model.addAttribute("endHour", end.get(Calendar.HOUR_OF_DAY));
+            model.addAttribute("endMinute", end.get(Calendar.MINUTE));
+        }
+
         model.addAttribute("eventLocation", eventToEdit.getLocation());
 
         model.addAttribute("locations", locationDao.findAll());
@@ -107,6 +113,8 @@ public class EventController {
                                        @RequestParam int dayOfMonth,
                                        @RequestParam int hourOfDay,
                                        @RequestParam int minute,
+                                       @RequestParam int endHour,
+                                       @RequestParam int endMinute,
                                        @RequestParam int locationId) {
 
         Event eventToEdit = eventDao.findOne(eventId);
@@ -117,6 +125,10 @@ public class EventController {
         Calendar dateAndTime = Calendar.getInstance();
         dateAndTime.set(year, month, dayOfMonth, hourOfDay, minute);
         eventToEdit.setDateAndTime(dateAndTime);
+
+        Calendar end = Calendar.getInstance();
+        end.set(year, month, dayOfMonth, endHour, endMinute);
+        eventToEdit.setEnd(end);
 
         Location location = locationDao.findOne(locationId);
         eventToEdit.setLocation(location);
