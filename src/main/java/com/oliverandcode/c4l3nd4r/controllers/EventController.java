@@ -50,6 +50,8 @@ public class EventController {
                                       @RequestParam int dayOfMonth,
                                       @RequestParam int hourOfDay,
                                       @RequestParam int minute,
+                                      @RequestParam int endHour,
+                                      @RequestParam int endMinute,
                                       Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "New Event");
@@ -62,6 +64,10 @@ public class EventController {
         Calendar dateAndTime = Calendar.getInstance();
         dateAndTime.set(year, month, dayOfMonth, hourOfDay, minute);
         newEvent.setDateAndTime(dateAndTime);
+
+        Calendar end = Calendar.getInstance();
+        end.set(year, month, dayOfMonth, endHour, endMinute);
+        newEvent.setEnd(end);
 
         eventDao.save(newEvent);
 

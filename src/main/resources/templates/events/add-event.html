@@ -118,17 +118,34 @@
     </div>
 
     <div class="form-control">
-        <label th:for="hourOfDay">Hour of Day (24 hour)</label>
-        <input class="form-control" name="hourOfDay" id="hourOfDay" />
-        <span class="error"></span>
+        <h3> Time (start)</h3>
+        <div class="form-control">
+            <label th:for="hourOfDay">Hour of Day (24 hour)</label>
+            <input class="form-control" name="hourOfDay" id="hourOfDay" />
+            <span class="error"></span>
+        </div>
+
+        <div class="form-control">
+            <label th:for="minute">Minute</label>
+            <input class="form-control" name="minute" id="minute" />
+            <span class="error"></span>
+        </div>
     </div>
 
     <div class="form-control">
-        <label th:for="minute">Minute</label>
-        <input class="form-control" name="minute" id="minute" />
-        <span class="error"></span>
-    </div>
+        <h3> Time (end)</h3>
+        <div class="form-control">
+            <label th:for="endHour">Hour of Day (24 hour)</label>
+            <input class="form-control" name="endHour" id="endHour" />
+            <span class="error"></span>
+        </div>
 
+        <div class="form-control">
+            <label th:for="endMinute">Minute</label>
+            <input class="form-control" name="endMinute" id="endMinute" />
+            <span class="error"></span>
+        </div>
+    </div>
 
     <div class="form-group">
         <label th:for="location">Location</label>
